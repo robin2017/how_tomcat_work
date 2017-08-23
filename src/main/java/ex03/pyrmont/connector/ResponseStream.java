@@ -1,9 +1,11 @@
 package ex03.pyrmont.connector;
 
 import ex03.pyrmont.connector.http.HttpResponse;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.servlet.ServletOutputStream;
 
 /**
  * Convenience implementation of <b>ServletOutputStream</b> that works with
@@ -196,5 +198,14 @@ public class ResponseStream extends ServletOutputStream {
     }
 
 
+    @Override
+    public boolean isReady() {
+        return false;
+    }
+
+    @Override
+    public void setWriteListener(WriteListener writeListener) {
+
+    }
 }
 

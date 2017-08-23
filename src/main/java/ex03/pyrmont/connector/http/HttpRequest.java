@@ -5,31 +5,22 @@ package ex03.pyrmont.connector.http;
  *  The HttpRequestImpl class employs a pool of HttpHeader objects for performance
  *  These two classes will be explained in Chapter 4.
  */
+
 import ex03.pyrmont.connector.RequestStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Cookie;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import java.security.Principal;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 import org.apache.catalina.util.Enumerator;
 import org.apache.catalina.util.ParameterMap;
 import org.apache.catalina.util.RequestUtil;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 
 public class HttpRequest implements HttpServletRequest {
 
@@ -149,7 +140,11 @@ public class HttpRequest implements HttpServletRequest {
     // Parse any parameters specified in the query string
     String queryString = getQueryString();
     try {
+
+
       RequestUtil.parseParameters(results, queryString, encoding);
+
+
     }
     catch (UnsupportedEncodingException e) {
       ;
@@ -324,6 +319,10 @@ public class HttpRequest implements HttpServletRequest {
     return contentLength ;
   }
 
+  public long getContentLengthLong() {
+    return 0;
+  }
+
   public String getContentType() {
     return contentType;
   }
@@ -482,6 +481,50 @@ public class HttpRequest implements HttpServletRequest {
     return null;
   }
 
+  public int getRemotePort() {
+    return 0;
+  }
+
+  public String getLocalName() {
+    return null;
+  }
+
+  public String getLocalAddr() {
+    return null;
+  }
+
+  public int getLocalPort() {
+    return 0;
+  }
+
+  public ServletContext getServletContext() {
+    return null;
+  }
+
+  public AsyncContext startAsync() throws IllegalStateException {
+    return null;
+  }
+
+  public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) throws IllegalStateException {
+    return null;
+  }
+
+  public boolean isAsyncStarted() {
+    return false;
+  }
+
+  public boolean isAsyncSupported() {
+    return false;
+  }
+
+  public AsyncContext getAsyncContext() {
+    return null;
+  }
+
+  public DispatcherType getDispatcherType() {
+    return null;
+  }
+
   public String getRemoteAddr() {
     return null;
   }
@@ -526,6 +569,10 @@ public class HttpRequest implements HttpServletRequest {
     return null;
   }
 
+  public String changeSessionId() {
+    return null;
+  }
+
   public HttpSession getSession(boolean create) {
     return null;
   }
@@ -544,6 +591,30 @@ public class HttpRequest implements HttpServletRequest {
 
   public boolean isRequestedSessionIdFromUrl() {
     return isRequestedSessionIdFromURL();
+  }
+
+  public boolean authenticate(HttpServletResponse httpServletResponse) throws IOException, ServletException {
+    return false;
+  }
+
+  public void login(String s, String s1) throws ServletException {
+
+  }
+
+  public void logout() throws ServletException {
+
+  }
+
+  public Collection<Part> getParts() throws IOException, ServletException {
+    return null;
+  }
+
+  public Part getPart(String s) throws IOException, ServletException {
+    return null;
+  }
+
+  public <T extends HttpUpgradeHandler> T upgrade(Class<T> aClass) throws IOException, ServletException {
+    return null;
   }
 
   public boolean isRequestedSessionIdFromURL() {

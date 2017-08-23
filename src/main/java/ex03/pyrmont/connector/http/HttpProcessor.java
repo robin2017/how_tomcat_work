@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 
 import org.apache.catalina.util.RequestUtil;
-import org.apache.catalina.util.StringManager;
+import org.apache.tomcat.util.res.StringManager;
 
 /* this class used to be called HttpServer */
 public class HttpProcessor {
@@ -106,7 +106,9 @@ public class HttpProcessor {
       request.addHeader(name, value);
       // do something for some headers, ignore others.
       if (name.equals("cookie")) {
+
         Cookie cookies[] = RequestUtil.parseCookieHeader(value);
+
         for (int i = 0; i < cookies.length; i++) {
           if (cookies[i].getName().equals("jsessionid")) {
             // Override anything requested in the URL

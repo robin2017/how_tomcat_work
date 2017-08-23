@@ -2,26 +2,14 @@ package ex03.pyrmont.connector.http;
 
 import ex03.pyrmont.connector.ResponseStream;
 import ex03.pyrmont.connector.ResponseWriter;
-import ex03.pyrmont.connector.http.Constants;
+import org.apache.catalina.util.CookieTools;
 
-import java.io.OutputStream;
-import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.File;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.catalina.util.CookieTools;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class HttpResponse implements HttpServletResponse {
 
@@ -476,6 +464,10 @@ public class HttpResponse implements HttpServletResponse {
     return writer;
   }
 
+  public void setCharacterEncoding(String s) {
+
+  }
+
   /**
    * Has the output of this response already been committed?
    */
@@ -507,6 +499,10 @@ public class HttpResponse implements HttpServletResponse {
 //    if (included)
   //     return;     // Ignore any call from an included servlet
     this.contentLength = length;
+  }
+
+  public void setContentLengthLong(long l) {
+
   }
 
   public void setContentType(String type) {
@@ -578,5 +574,21 @@ public class HttpResponse implements HttpServletResponse {
   }
 
   public void setStatus(int sc, String message) {
+  }
+
+  public int getStatus() {
+    return 0;
+  }
+
+  public String getHeader(String s) {
+    return null;
+  }
+
+  public Collection<String> getHeaders(String s) {
+    return null;
+  }
+
+  public Collection<String> getHeaderNames() {
+    return null;
   }
 }

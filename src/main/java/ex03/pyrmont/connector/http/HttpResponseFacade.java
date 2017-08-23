@@ -1,11 +1,12 @@
 package ex03.pyrmont.connector.http;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Locale;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.Locale;
 
 public class HttpResponseFacade implements HttpServletResponse {
   private HttpServletResponse response;
@@ -62,6 +63,10 @@ public class HttpResponseFacade implements HttpServletResponse {
     return response.getCharacterEncoding();
   }
 
+  public String getContentType() {
+    return null;
+  }
+
   public Locale getLocale() {
     return response.getLocale();
   }
@@ -72,6 +77,10 @@ public class HttpResponseFacade implements HttpServletResponse {
 
   public PrintWriter getWriter() throws IOException {
     return response.getWriter();
+  }
+
+  public void setCharacterEncoding(String s) {
+
   }
 
   public boolean isCommitted() {
@@ -106,6 +115,10 @@ public class HttpResponseFacade implements HttpServletResponse {
     response.setContentLength(length);
   }
 
+  public void setContentLengthLong(long l) {
+
+  }
+
   public void setContentType(String type) {
     response.setContentType(type);
   }
@@ -132,5 +145,21 @@ public class HttpResponseFacade implements HttpServletResponse {
 
   public void setStatus(int sc, String message) {
     response.setStatus(sc, message);
+  }
+
+  public int getStatus() {
+    return 0;
+  }
+
+  public String getHeader(String s) {
+    return null;
+  }
+
+  public Collection<String> getHeaders(String s) {
+    return null;
+  }
+
+  public Collection<String> getHeaderNames() {
+    return null;
   }
 }
